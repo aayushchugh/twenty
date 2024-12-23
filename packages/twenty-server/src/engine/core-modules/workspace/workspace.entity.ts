@@ -27,7 +27,8 @@ export enum WorkspaceActivationStatus {
   ONGOING_CREATION = 'ONGOING_CREATION',
   PENDING_CREATION = 'PENDING_CREATION',
   ACTIVE = 'ACTIVE',
-  INACTIVE = 'INACTIVE',
+  INACTIVE = 'INACTIVE', // TODO: Deprecate this status
+  SUSPENDED = 'SUSPENDED',
 }
 
 registerEnumType(WorkspaceActivationStatus, {
@@ -115,7 +116,7 @@ export class Workspace {
   @Column({
     type: 'enum',
     enum: WorkspaceActivationStatus,
-    default: WorkspaceActivationStatus.INACTIVE,
+    default: WorkspaceActivationStatus.PENDING_CREATION,
   })
   activationStatus: WorkspaceActivationStatus;
 
